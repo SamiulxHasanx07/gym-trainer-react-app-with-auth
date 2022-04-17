@@ -1,29 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import './Signup.css';
-import googleImg from '../../../images/social/google-img.png';
-import facebookImg from '../../../images/social/facebook.png';
-import githubImg from '../../../images/social/github.png';
+// import googleImg from '../../../images/social/google-img.png';
+// import facebookImg from '../../../images/social/facebook.png';
+// import githubImg from '../../../images/social/github.png';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
-const Signup = () => {
-    const [userInfo, setUserInfo] = useState({ name: '', email: '', password: '', confirmPassword: '' })
-    const [errors, setErrors] = useState({ name: '', email: '', password: '', confirmPassword: '' })
+import { toast, ToastContainer } from 'react-toastify';
 
+const Signup = () => {
+    const [userInfo, setUserInfo] = useState({ displayName: '', email: '', password: '', confirmPassword: '' })
+    const [errors, setErrors] = useState({ name: '', email: '', password: '', confirmPassword: '' })
+    const [updateProfile, updating, error] = useUpdateProfile(auth);
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         hookError,
-    ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification:true});
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
+    useEffect(() => {
+        if (hookError) {
+            console.log(hookError)
+            switch (hookError?.code) {
+                case "auth/email-already-in-use":
+                    toast("User Already Exists!");
+                    break;
+                case "auth/internal-error":
+                    toast("Inernal Error Please Try Again!");
+                    break;
+                default:
+
+            }
+
+        }
+    })
 
     const handleName = (e) => {
         const name = e.target.value;
         const validate = name.length >= 2;
-        console.log(validate);
 
         if (validate) {
             setUserInfo({ ...userInfo, name: e.target.value })
@@ -31,7 +48,7 @@ const Signup = () => {
         } else {
             setErrors({ ...errors, name: 'Enter Valid Name' })
         }
-        if(e.target.value == ''){
+        if (e.target.value == '') {
             setErrors({ ...errors, name: '' })
         }
     }
@@ -47,7 +64,7 @@ const Signup = () => {
             setUserInfo({ ...userInfo, email: '' })
         }
 
-        if(e.target.value == ''){
+        if (e.target.value == '') {
             setErrors({ ...errors, email: '' })
         }
     }
@@ -62,22 +79,10 @@ const Signup = () => {
             setErrors({ ...errors, password: 'Minimum six characters, at least one letter, one number and one special character' })
         }
 
-        if(e.target.value == ''){
+        if (e.target.value == '') {
             setErrors({ ...errors, password: '' })
         }
     }
-
-
-    const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
-    
-    useEffect(()=>{
-        if(user){
-            navigate(from)
-        }
-    }, [user])
-
     const handleConfirmPass = e => {
         const validateConfirmPass = userInfo.password === e.target.value;
         if (validateConfirmPass) {
@@ -88,16 +93,29 @@ const Signup = () => {
             setErrors({ ...errors, confirmPassword: 'Password Not Match' })
         }
 
-        if(e.target.value == ''){
+        if (e.target.value == '') {
             setErrors({ ...errors, confirmPassword: '' })
         }
     }
-
-    const signup = e => {
-        e.preventDefault();
-        createUserWithEmailAndPassword(userInfo.email, userInfo.password)
-        console.log(hookError.message)
+    if (updating) {
+        toast('please wait');   
     }
+    const signup = async(e) => {
+        e.preventDefault();
+        createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+        const { userName } = userInfo;
+        await updateProfile({ displayName: "My Name" });
+    }
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+    useEffect(() => {
+        if (user) {
+            navigate(from)
+        }
+    }, [user])
 
     return (
         <div className='signup py-5'>
@@ -166,6 +184,7 @@ const Signup = () => {
                     </div> */}
 
                     <SocialLogin></SocialLogin>
+                    <ToastContainer></ToastContainer>
 
                 </div>
             </Container>

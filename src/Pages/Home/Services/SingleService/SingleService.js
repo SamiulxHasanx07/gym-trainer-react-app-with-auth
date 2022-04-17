@@ -1,9 +1,13 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import './SingleService.css';
 const SingleService = ({ singleService }) => {
     const { service, price, description, img } = singleService;
-
+    const navigate = useNavigate();
+    const bookNow =()=> {
+        navigate('/checkout')
+    }
     return (
         <Col>
             <Card className='pb-4 border-0' style={{borderRadius:'20px'}}>
@@ -17,7 +21,7 @@ const SingleService = ({ singleService }) => {
                         {description.slice(0, 120)}
                     </Card.Text>
                     <div className='mt-4 d-flex justify-content-center'>
-                        <button className='card-btn primary-bg font'>Book Now</button>
+                        <button onClick={bookNow} className='card-btn primary-bg font'>Book Now</button>
                     </div>
                 </Card.Body>
             </Card>

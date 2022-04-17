@@ -29,12 +29,12 @@ const Header = () => {
                         <CustomLink className='me-3' to='/checkout'>Checkout</CustomLink>
                         <CustomLink className='me-3' to='/blogs'>Blogs</CustomLink>
                         
-                        <CustomLink className='me-3' to='/signup'>Signup</CustomLink>
 
                         {
                             user?(<button className='text-white btn btn-link me-4 m-0' onClick={Logout}>Logout</button>) : (<CustomLink className='me-3' to='/login'>Login</CustomLink>)
                         }
                         
+                        <CustomLink className='me-3' to='/signup'>Register</CustomLink>
                         <p className='text-white me-4  m-0' style={{textDecoration:'none'}}>{user?'Hi, ':''}{user?user.displayName:''}</p>
                         <img style={{height:'45px', borderRadius:'100px'}} src={user?.photoURL} alt="" />
                         {/* <button className="btn btn-link text-white">Logout</button> */}

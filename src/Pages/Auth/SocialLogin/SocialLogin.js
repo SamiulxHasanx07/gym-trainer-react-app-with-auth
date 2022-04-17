@@ -52,7 +52,6 @@ const SocialLogin = () => {
     }, [newError])
 
     const location = useLocation();
-    console.log(location.pathname);
     const loginPage = location.pathname == '/login';
 
     return (
