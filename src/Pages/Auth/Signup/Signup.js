@@ -7,6 +7,7 @@ import googleImg from '../../../images/social/google-img.png';
 import facebookImg from '../../../images/social/facebook.png';
 import githubImg from '../../../images/social/github.png';
 import auth from '../../../firebase.init';
+import SocialLogin from '../SocialLogin/SocialLogin';
 const Signup = () => {
     const [userInfo, setUserInfo] = useState({ name: '', email: '', password: '', confirmPassword: '' })
     const [errors, setErrors] = useState({ name: '', email: '', password: '', confirmPassword: '' })
@@ -30,6 +31,9 @@ const Signup = () => {
         } else {
             setErrors({ ...errors, name: 'Enter Valid Name' })
         }
+        if(e.target.value == ''){
+            setErrors({ ...errors, name: '' })
+        }
     }
 
     const handleEmal = (e) => {
@@ -42,6 +46,10 @@ const Signup = () => {
             setErrors({ ...errors, email: 'Enter Valid Email' })
             setUserInfo({ ...userInfo, email: '' })
         }
+
+        if(e.target.value == ''){
+            setErrors({ ...errors, email: '' })
+        }
     }
 
     const handlePassword = e => {
@@ -53,13 +61,18 @@ const Signup = () => {
         } else {
             setErrors({ ...errors, password: 'Minimum six characters, at least one letter, one number and one special character' })
         }
+
+        if(e.target.value == ''){
+            setErrors({ ...errors, password: '' })
+        }
     }
 
 
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-
+    console.log(location);
+    
     useEffect(()=>{
         if(user){
             navigate(from)
@@ -74,6 +87,10 @@ const Signup = () => {
         } else {
             setUserInfo({ ...userInfo, confirmPassword: '' })
             setErrors({ ...errors, confirmPassword: 'Password Not Match' })
+        }
+
+        if(e.target.value == ''){
+            setErrors({ ...errors, confirmPassword: '' })
         }
     }
 
@@ -132,7 +149,7 @@ const Signup = () => {
                         <div></div>
                     </div>
 
-                    <div className="other-signup">
+                    {/* <div className="other-signup">
                         <div className='d-flex align-items-center justify-content-center'>
                             <button className='btn'>
                                 <img src={googleImg} alt="" />
@@ -147,7 +164,9 @@ const Signup = () => {
                                 Github Signup
                             </button>
                         </div>
-                    </div>
+                    </div> */}
+
+                    <SocialLogin></SocialLogin>
 
                 </div>
             </Container>

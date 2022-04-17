@@ -10,7 +10,6 @@ import CustomLink from '../../CustomLink/CustomLink';
 import './Header.css';
 const Header = () => {
     const [user] = useAuthState(auth)
-console.log(user);
 
     const Logout = () => {
         signOut(auth);

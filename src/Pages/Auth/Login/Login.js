@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
-import { useAuthState, useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import googleImg from '../../../images/social/google-img.png';
-import facebookImg from '../../../images/social/facebook.png';
-import githubImg from '../../../images/social/github.png';
-
+import SocialLogin from '../SocialLogin/SocialLogin';
+import { ToastContainer, toast } from 'react-toastify';
+// import googleImg from '../../../images/social/google-img.png';
+// import facebookImg from '../../../images/social/facebook.png';
+// import githubImg from '../../../images/social/github.png';
 const Login = () => {
     const [userInfo, setUserInfo] = useState({ email: '', password: '' })
     const [errors, setErrors] = useState({ email: '', password: '' })
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading, hookError] = useAuthState(auth);
     const [
         signInWithEmailAndPassword,
         createUser,
@@ -18,9 +19,56 @@ const Login = () => {
         signinError,
     ] = useSignInWithEmailAndPassword(auth);
 
-    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-    const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth);
-    const [signInWithFacebook, facebookUser, FacebookLoading, facebookError] = useSignInWithFacebook(auth);
+    const [outSideError, setOutSideError] = useState('')
+    useEffect(() => {
+        if (signinError) {
+            setOutSideError(signinError?.code)
+        }
+    }, [signinError])
+
+    useEffect(() => {
+        switch (outSideError) {
+            case "auth/wrong-password":
+                toast("Invalid Password please Try Again!");
+                setOutSideError('')
+                break;
+            case "auth/user-not-found":
+                toast('User Not found Please try again!');
+                setOutSideError('')
+                break;
+            case "auth/invalid-email":
+                toast('invalid email!, provide valid email');
+                setOutSideError('')
+                break;
+            case "auth/email-already-exists":
+                toast('This user already exists!');
+                setOutSideError('')
+                break;
+            default:
+            // toast('something went wrong')
+
+        }
+    }, [outSideError])
+    // const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    // const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth);
+    // const [signInWithFacebook, facebookUser, FacebookLoading, facebookError] = useSignInWithFacebook(auth);
+
+    // const [newError, setNewError] = useState({ emailError: '', passError: '', otherError: '' })
+    // useEffect(() => {
+    //     if (googleError) {
+    //         switch (googleError?.code) {
+    //             case "auth/invalid-email":
+    //                 toast('invalid email!, provide valid email');
+    //                 break;
+    //             case "auth/email-already-exists":
+    //                 toast('This user already exists!');
+    //                 break;
+    //             default:
+    //                 toast('Something went wrong please try again')
+    //         }
+    //     }
+    // }, [googleError])
+
 
     const handleEmal = (e) => {
         const emailRegex = /\S+@\S+\.\S+/;
@@ -28,12 +76,16 @@ const Login = () => {
         if (validEmail) {
             setUserInfo({ ...userInfo, email: e.target.value })
             setErrors({ ...errors, email: '' })
-        } else {
+        }else{
             setErrors({ ...errors, email: 'Enter Valid Email' })
             setUserInfo({ ...userInfo, email: '' })
         }
-    }
 
+        if(e.target.value == ''){
+            setErrors({ ...errors, email: '' })
+            
+        }
+    }
     const handlePassword = e => {
         const passwordChk = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
         const validPass = passwordChk.test(e.target.value);
@@ -42,6 +94,10 @@ const Login = () => {
             setErrors({ ...errors, password: '' })
         } else {
             setErrors({ ...errors, password: 'Hints: Password Shoud be Minimum six characters, at least one letter, one number and one special character' })
+        }
+        if(e.target.value == ''){
+            setErrors({ ...errors, password: '' })
+            
         }
     }
 
@@ -60,7 +116,6 @@ const Login = () => {
             navigate(from)
         }
     }, [user])
-
 
 
     return (
@@ -100,7 +155,7 @@ const Login = () => {
                         <div></div>
                     </div>
 
-                    <div className="other-signup">
+                    {/* <div className="other-signup">
                         <div className='d-flex align-items-center justify-content-center'>
                             <button onClick={() => signInWithGoogle()} className='btn'>
                                 <img src={googleImg} alt="" />
@@ -116,7 +171,9 @@ const Login = () => {
                             </button>
                         </div>
                     </div>
-
+                    */}
+                    <ToastContainer />
+                    <SocialLogin></SocialLogin>
                 </div>
             </Container>
         </div>
