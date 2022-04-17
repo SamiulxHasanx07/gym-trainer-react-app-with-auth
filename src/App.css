@@ -5,9 +5,12 @@
   margin: 0;
   padding: 0;
 }
-h1, h2, h3, h4, h5, h6, button{
+h1, h2, h3, h4, h5, h6{
   font-family: 'Rajdhani', sans-serif;
-  font-weight: 700;
+}
+.font{
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
 }
 p{
   font-family: 'Poppins', sans-serif;
@@ -16,10 +19,23 @@ p{
   --main-color:#ff5504;
   --black-color:#010718;
 }
+.custom-color{
+  color: var(--main-color);
+}
 .bg-color{
   background-color: var(--black-color);
 }
-
+.primary-bg{
+  background-color: var(--main-color);
+}
+/* Button */
+.card-btn{
+  background-color: var(--main-color);
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  padding: 8px 25px;
+}
 .custom-btn{
   background-color: var(--main-color);
   font-size: 25px;
@@ -28,10 +44,13 @@ p{
   padding: 10px 25px;
 }
 
-.custom-btn:hover{
+.custom-btn:hover, .card-btn:hover{
   background-color: #d64603;
 }
-
+.sec-title{
+  font-size: 60px;
+  font-weight: 700;
+}
 footer{
   background-color: var(--black-color);
 }
