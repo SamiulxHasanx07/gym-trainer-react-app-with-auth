@@ -1,13 +1,33 @@
+/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,700&display=swap');
 *{
   margin: 0;
   padding: 0;
 }
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6, button{
   font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
+}
+p{
+  font-family: 'Poppins', sans-serif;
 }
 :root{
   --main-color:#ff5504;
   --black-color:#010718;
+}
+.bg-color{
+  background-color: var(--black-color);
+}
+
+.custom-btn{
+  background-color: var(--main-color);
+  font-size: 25px;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+}
+
+.custom-btn:hover{
+  background-color: #d64603;
 }
