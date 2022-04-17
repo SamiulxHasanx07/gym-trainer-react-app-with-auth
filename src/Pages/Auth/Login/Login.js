@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import googleImg from '../../../images/social/google-img.png';
@@ -18,6 +18,9 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth);
+    const [signInWithFacebook, facebookUser, FacebookLoading, facebookError] = useSignInWithFacebook(auth);
 
     const handleEmal = (e) => {
         const emailRegex = /\S+@\S+\.\S+/;
@@ -47,9 +50,6 @@ const Login = () => {
         e.preventDefault();
         signInWithEmailAndPassword(userInfo.email, userInfo.password)
     }
-
-    console.log(user);
-
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/checkout';
@@ -60,11 +60,16 @@ const Login = () => {
         }
     }, [user])
 
+    if (loading) {
+        return <p>Loading...</p>
+    }
+    
     return (
         <div className='signup py-5'>
             <Container>
                 <div className='form-container w-50 mx-auto py-5 px-5'>
                     <h2 className='sec-title text-center'>Please Login!</h2>
+                    <h2 className='sec-title text-center'> </h2>
                     <Form onSubmit={login}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
@@ -98,15 +103,15 @@ const Login = () => {
 
                     <div className="other-signup">
                         <div className='d-flex align-items-center justify-content-center'>
-                            <button className='btn'>
+                            <button onClick={() => signInWithGoogle()} className='btn'>
                                 <img src={googleImg} alt="" />
                                 Google Login
                             </button>
-                            <button className='btn'>
+                            <button onClick={() => signInWithFacebook()} className='btn'>
                                 <img src={facebookImg} alt="" />
                                 Facebook Login
                             </button>
-                            <button className='btn'>
+                            <button onClick={() => signInWithGithub()} className='btn'>
                                 <img src={githubImg} alt="" />
                                 Github Login
                             </button>
