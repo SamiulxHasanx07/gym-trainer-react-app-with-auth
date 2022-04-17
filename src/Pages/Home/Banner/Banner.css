@@ -1,6 +1,7 @@
 .banner-section{
     min-height: 800px;
     background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 

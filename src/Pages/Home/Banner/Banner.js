@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import hero from '../../../images/banner/hero-1.jpg';
 import './Banner.css';
 const Banner = () => {

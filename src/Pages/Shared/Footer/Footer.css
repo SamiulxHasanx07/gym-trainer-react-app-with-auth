@@ -1,0 +1,21 @@
+footer .links a{
+    color:#fff;
+    text-decoration: none;
+    margin-left: 20px;
+    border-left: 2px solid #d64603;
+    padding-left: 20px;
+}
+
+footer .links a:first-child{
+    margin-left: 0;
+    border: none;
+}
+
+.footer-sec-text a{
+    text-decoration: none;
+    color: #fff;
+}
+.footer-sec-text a:hover{
+    color: #d64603;
+    cursor: pointer;
+}

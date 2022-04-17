@@ -31,3 +31,7 @@ p{
 .custom-btn:hover{
   background-color: #d64603;
 }
+
+footer{
+  background-color: var(--black-color);
+}
