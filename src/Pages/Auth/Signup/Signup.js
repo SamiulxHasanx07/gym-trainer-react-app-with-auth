@@ -16,18 +16,8 @@ const Signup = () => {
         user,
         loading,
         hookError,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification:true});
 
-
-    const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
-    useEffect(() => {
-        if (user) {
-            navigate(from)
-        }
-
-    }, [user]);
 
     const handleName = (e) => {
         const name = e.target.value;
@@ -65,6 +55,17 @@ const Signup = () => {
         }
     }
 
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+    useEffect(()=>{
+        if(user){
+            navigate(from)
+        }
+    }, [user])
+
     const handleConfirmPass = e => {
         const validateConfirmPass = userInfo.password === e.target.value;
         if (validateConfirmPass) {
@@ -97,7 +98,7 @@ const Signup = () => {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control onChange={handleEmal} type="email" placeholder="Enter email" />
+                            <Form.Control required onChange={handleEmal} type="email" placeholder="Enter email" />
                             <Form.Text className="text-danger">
                                 {errors?.email}
                             </Form.Text>
@@ -105,14 +106,14 @@ const Signup = () => {
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control onChange={handlePassword} type="password" placeholder="Password" />
+                            <Form.Control required onChange={handlePassword} type="password" placeholder="Password" />
                             <Form.Text className="text-danger">
                                 {errors?.password}
                             </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
                             <Form.Label>Confirm Password</Form.Label>
-                            <Form.Control onChange={handleConfirmPass} type="password" placeholder="Confirm Password" />
+                            <Form.Control required onChange={handleConfirmPass} type="password" placeholder="Confirm Password" />
                             <Form.Text className="text-danger">
                                 {errors?.confirmPassword}
                             </Form.Text>
