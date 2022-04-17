@@ -10,12 +10,12 @@ import githubImg from '../../../images/social/github.png';
 const Login = () => {
     const [userInfo, setUserInfo] = useState({ email: '', password: '' })
     const [errors, setErrors] = useState({ email: '', password: '' })
-
+    const [user, loading, error] = useAuthState(auth);
     const [
         signInWithEmailAndPassword,
-        user,
-        loading,
-        error,
+        createUser,
+        signupLoading,
+        signupError,
     ] = useSignInWithEmailAndPassword(auth);
 
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
@@ -50,9 +50,10 @@ const Login = () => {
         e.preventDefault();
         signInWithEmailAndPassword(userInfo.email, userInfo.password)
     }
+
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/checkout';
+    const from = location.state?.from?.pathname || '/';
 
     useEffect(() => {
         if (user) {
@@ -60,10 +61,11 @@ const Login = () => {
         }
     }, [user])
 
+
     if (loading) {
         return <p>Loading...</p>
     }
-    
+
     return (
         <div className='signup py-5'>
             <Container>
