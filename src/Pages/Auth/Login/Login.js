@@ -15,7 +15,7 @@ const Login = () => {
         signInWithEmailAndPassword,
         createUser,
         signupLoading,
-        signupError,
+        signinError,
     ] = useSignInWithEmailAndPassword(auth);
 
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
@@ -62,9 +62,6 @@ const Login = () => {
     }, [user])
 
 
-    if (loading) {
-        return <p>Loading...</p>
-    }
 
     return (
         <div className='signup py-5'>
