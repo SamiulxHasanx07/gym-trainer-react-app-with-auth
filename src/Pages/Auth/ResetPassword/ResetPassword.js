@@ -30,7 +30,7 @@ const ResetPassword = () => {
         await sendPasswordResetEmail(email)
         toast('Password Reset Link Sended!')
     }
-    if(error){
+    if (error) {
         console.log(error);
     }
 

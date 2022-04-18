@@ -1,19 +1,26 @@
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 577px) and (max-width: 1000px) {
+
     /* login */
     .form-container {
         padding: 3rem 2rem;
         width: 90%;
     }
+
     .sec-title {
         font-size: 45px;
         text-align: center;
     }
- }
+}
 
 
 /* Small devices (landscape phones, 576px and up) */
 @media (max-width: 576px) {
+    .banner-section {
+        background-position: top right !important;
+        background-size: cover !important;
+    }
+
     .banner-text h2 {
         font-size: 60px;
     }
@@ -48,24 +55,29 @@
     .custom-btn {
         font-size: 15px;
     }
+
     /* login */
     .form-container {
         padding: 3rem 2rem;
         width: 98%;
     }
+
     /* other signin/signup */
-    .other-signup button{
+    .other-signup button {
         width: 100%;
         margin: 5px 0;
     }
-    .selected-service-btn{
+
+    .selected-service-btn {
         display: none;
     }
-    .selected-img{
+
+    .selected-img {
         width: 40px;
     }
+
     /* footer  */
-    footer .links a:first-child{
+    footer .links a:first-child {
         padding-left: 0;
     }
 

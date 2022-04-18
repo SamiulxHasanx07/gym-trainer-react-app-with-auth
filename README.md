@@ -10,8 +10,9 @@ Site Features:
 * User Can Get Subscription from website
 * User Can Contact from Website
 * Latest Blog Features
-* Moder UI
-* 24x7 Days Live Support
+* Modern User Friendly UI
+* User Authentication using Firebase
+* Firebase Deploy
 
 ## Technology Used (Frameworks & Libraries)
 * ReactJS

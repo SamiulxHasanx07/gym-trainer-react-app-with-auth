@@ -1,4 +1,3 @@
-
 import { signOut } from 'firebase/auth';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -13,25 +12,6 @@ const Header = () => {
     const Logout = () => {
         signOut(auth);
     };
-
-    
-    // const [scrollPosition, setScrollPosition] = useState(0);
-    // const handleScroll = () => {
-    //     const position = window.pageYOffset;
-    //     setScrollPosition(position);
-    // };
-
-    // useEffect(() => {
-    //     window.addEventListener('scroll', handleScroll, { passive: true });
-
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, []);
-    
-    // const position = scrollPosition >=100;
-    
-
     return (
         <Navbar collapseOnSelect expand="lg" bg="" variant="dark" sticky='top'>
             <Container>

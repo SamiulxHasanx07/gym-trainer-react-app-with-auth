@@ -46,7 +46,7 @@ const Blog = () => {
                     </tr>
                     <tr>
                         <td className='p-2'>
-                            <p>Firebase Authentication বাদে অন্য যে সকল সার্ভিস প্রদান করে থাকেঃ Storage, Realtime Database, Hosting, Analytics, Cloud Messaging ইত্যাদি সার্ভিস প্রদান করে থাকে।</p>
+                            <p>Firebase Authentication বাদে অন্য যে সকল সার্ভিস প্রদান করে থাকেঃ Storage, Realtime Database, Hosting, Analytics, Cloud Messaging ইত্যাদি কাজ করা যায়।</p>
                         </td>
                     </tr>
                 </tbody>

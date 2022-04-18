@@ -5,9 +5,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { ToastContainer, toast } from 'react-toastify';
-// import googleImg from '../../../images/social/google-img.png';
-// import facebookImg from '../../../images/social/facebook.png';
-// import githubImg from '../../../images/social/github.png';
 const Login = () => {
     const [userInfo, setUserInfo] = useState({ email: '', password: '' })
     const [errors, setErrors] = useState({ email: '', password: '' })
@@ -33,7 +30,7 @@ const Login = () => {
                 setOutSideError('')
                 break;
             case "auth/user-not-found":
-                toast('User Not found Please try again!');
+                toast('User/Email Not found Please try again!');
                 setOutSideError('')
                 break;
             case "auth/invalid-email":
@@ -49,26 +46,6 @@ const Login = () => {
 
         }
     }, [outSideError])
-    // const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-    // const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth);
-    // const [signInWithFacebook, facebookUser, FacebookLoading, facebookError] = useSignInWithFacebook(auth);
-
-    // const [newError, setNewError] = useState({ emailError: '', passError: '', otherError: '' })
-    // useEffect(() => {
-    //     if (googleError) {
-    //         switch (googleError?.code) {
-    //             case "auth/invalid-email":
-    //                 toast('invalid email!, provide valid email');
-    //                 break;
-    //             case "auth/email-already-exists":
-    //                 toast('This user already exists!');
-    //                 break;
-    //             default:
-    //                 toast('Something went wrong please try again')
-    //         }
-    //     }
-    // }, [googleError])
-
 
     const handleEmal = (e) => {
         const emailRegex = /\S+@\S+\.\S+/;

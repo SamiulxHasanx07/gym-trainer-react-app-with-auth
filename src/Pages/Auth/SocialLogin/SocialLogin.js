@@ -56,7 +56,6 @@ const SocialLogin = () => {
 
     return (
         <div>
-
             <div className="other-signup">
                 <div className='d-block d-md-flex align-items-center justify-content-center'>
                     <button onClick={() => signInWithGoogle()} className='btn'>

@@ -3,9 +3,6 @@ import { Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import './Signup.css';
-// import googleImg from '../../../images/social/google-img.png';
-// import facebookImg from '../../../images/social/facebook.png';
-// import githubImg from '../../../images/social/github.png';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { toast, ToastContainer } from 'react-toastify';
@@ -26,10 +23,13 @@ const Signup = () => {
             console.log(hookError)
             switch (hookError?.code) {
                 case "auth/email-already-in-use":
-                    toast("User Already Exists!");
+                    toast("User Already Exists! Login Please!");
                     break;
                 case "auth/internal-error":
                     toast("Inernal Error Please Try Again!");
+                    break;
+                case "auth/email-already-exists":
+                    toast('This user already exists! Login Please!');
                     break;
                 default:
 
@@ -105,20 +105,19 @@ const Signup = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/checkout';
 
-    useEffect(() => {
-        if (user) {
-            
-        }
-    }, [user])
 
     const signup = async (e) => {
         e.preventDefault();
         const { name } = userInfo;
         await createUserWithEmailAndPassword(userInfo.email, userInfo.password);
         await updateProfile({ displayName: name });
-        navigate(from);
     }
 
+    useEffect(() => {
+        if (user) {
+            navigate(from);
+        }
+    }, [user])
     return (
         <div className='signup py-5'>
             <Container>
@@ -167,27 +166,8 @@ const Signup = () => {
                         <p className='mt-3'>Or</p>
                         <div></div>
                     </div>
-
-                    {/* <div className="other-signup">
-                        <div className='d-flex align-items-center justify-content-center'>
-                            <button className='btn'>
-                                <img src={googleImg} alt="" />
-                                Google Signup
-                            </button>
-                            <button className='btn'>
-                                <img src={facebookImg} alt="" />
-                                Facebook Signup
-                            </button>
-                            <button className='btn'>
-                                <img src={githubImg} alt="" />
-                                Github Signup
-                            </button>
-                        </div>
-                    </div> */}
-
                     <SocialLogin></SocialLogin>
                     <ToastContainer></ToastContainer>
-
                 </div>
             </Container>
         </div >
