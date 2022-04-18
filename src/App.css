@@ -88,6 +88,20 @@ p {
   width: 50%;
 }
 
+.single-service{
+  background-color: #f2f6ff;
+}
+
+.single-selected{
+  border-bottom: 1px solid #ffc4a9;
+  margin-bottom: 10px;
+}
+.single-selected:last-child{
+  border: 0;
+}
+.single-selected h4{
+  font-size: 15px;
+}
 
 footer {
   background-color: var(--black-color);

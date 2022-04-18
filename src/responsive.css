@@ -58,10 +58,17 @@
         width: 100%;
         margin: 5px 0;
     }
+    .selected-service-btn{
+        display: none;
+    }
+    .selected-img{
+        width: 40px;
+    }
     /* footer  */
     footer .links a:first-child{
         padding-left: 0;
     }
+
 
 
 }
