@@ -11,29 +11,34 @@ const Signup = () => {
     const [userInfo, setUserInfo] = useState({ name: '', email: '', password: '', confirmPassword: '' })
     const [errors, setErrors] = useState({ name: '', email: '', password: '', confirmPassword: '' })
     const [updateProfile, updating, error] = useUpdateProfile(auth);
+    const [outSideError, setOutSideError] = useState('')
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         hookError,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-
     useEffect(() => {
         if (hookError) {
-            console.log(hookError)
-            switch (hookError?.code) {
-                case "auth/email-already-in-use":
-                    toast("User Already Exists! Login Please!");
-                    break;
-                case "auth/internal-error":
-                    toast("Inernal Error Please Try Again!");
-                    break;
-                case "auth/email-already-exists":
-                    toast('This user already exists! Login Please!');
-                    break;
-                default:
+            setOutSideError(hookError?.code)
+        }
+    }, [hookError])
 
-            }
+    useEffect(() => {
+        switch (outSideError) {
+            case "auth/email-already-in-use":
+                toast("User Already Exists! Login Please!");
+                setOutSideError('')
+                break;
+            case "auth/internal-error":
+                toast("Inernal Error Please Try Again!");
+                setOutSideError('')
+                break;
+            case "auth/email-already-exists":
+                toast('This user already exists! Login Please!');
+                setOutSideError('')
+                break;
+            default:
 
         }
     })
@@ -101,17 +106,16 @@ const Signup = () => {
         toast('please wait');
     }
 
-    const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/checkout';
-
-
     const signup = async (e) => {
         e.preventDefault();
         const { name } = userInfo;
         await createUserWithEmailAndPassword(userInfo.email, userInfo.password);
         await updateProfile({ displayName: name });
     }
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/checkout';
 
     useEffect(() => {
         if (user) {
