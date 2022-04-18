@@ -12,7 +12,7 @@ const SingleLatestBlog = ({ singleBlog }) => {
                 <Card.Body>
                     <Card.Title>{title.slice(0, 30)}{"..."}</Card.Title>
                     <Card.Text>
-                        {blog.slice(0,100)}{'...'}
+                        {blog.slice(0,80)}{'...'}
                     </Card.Text>
                     <button className='card-btn'>Read Details</button>
                 </Card.Body>

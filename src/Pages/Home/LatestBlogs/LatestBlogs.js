@@ -9,11 +9,11 @@ const LatestBlogs = () => {
         { _id: 3, title: 'Free Hand Exersise Tips & Tricks', blog: 'Repeat for 8 rounds. Make it a total-body workout with bodyweigh', img:'https://raw.githubusercontent.com/SamiulxHasanx07/images/main/gym-service/blog/blog-3.jpg'}
     ]
     return (
-        <div className='py-5  bg-color'>
-            <Container>
+        <div className='latest-blog py-5  bg-color'>
+            <Container className='pb-5 pt-3'>
                 <h2 className='sec-title text-white mb-4'>Latest Blogs</h2>
 
-                <Row xs={1} md={2} lg={3} className="g-5">
+                <Row xs={1} md={2} lg={3} className="g-2 g-lg-5">
                     {
                         blogs.map(singleBlog => <SingleLatestBlog key={singleBlog._id} singleBlog={singleBlog}></SingleLatestBlog>)
                     }

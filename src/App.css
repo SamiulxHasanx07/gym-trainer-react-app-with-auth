@@ -78,7 +78,10 @@ p {
   font-size: 60px;
   font-weight: 700;
 }
-
+/* blog */
+.latest-blog{
+  overflow: hidden;
+}
 /* login form */
 .form-container {
   padding: 3rem 3rem;
