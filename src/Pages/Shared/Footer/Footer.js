@@ -9,14 +9,14 @@ const Footer = () => {
         <footer className='pt-5 pb-3 text-white'>
             <Container>
                 <Row>
-                    <Col sm='12' md="12" lg="3">
+                    <Col  sm={12} md={6} lg={3}>
                         <img className='mb-5' style={{ height: '50px' }} src={logo} alt="" />
-                        <p>Phone: +880 1722-058000</p>
-                        <p>Mail: sam.coach2022@gmail.com</p>
+                        <p className='m-0'>Phone: +880 1722-058000</p>
+                        <p className='m-0'>Mail: sam.coach2022@gmail.com</p>
 
                     </Col>
-                    <Col sm='12' md="12" lg="3">
-                        <h2 className='pb-4'>Services</h2>
+                    <Col  sm={12} md={6} lg={3}>
+                        <h2 className='pb-1 mt-4 mt-md-4 mt-lg-0 pb-md-3'>Services</h2>
 
                         <div className='footer-sec-text'>
                             <Link to='' className='m-0 d-block'>Work Out</Link>
@@ -27,8 +27,8 @@ const Footer = () => {
                             <Link to='' className='m-0 d-block'>Nutrition</Link>
                         </div>
                     </Col>
-                    <Col sm='12' md="12" lg="3">
-                        <h2 className='pb-4'>Other Link</h2>
+                    <Col  sm={12} md={6} lg={3}>
+                        <h2 className='pb-1 mt-4 mt-md-4 mt-lg-0 pb-md-3'>Other Link</h2>
 
                         <div className='footer-sec-text'>
                             <Link to='' className='m-0 d-block'>Home</Link>
@@ -38,8 +38,8 @@ const Footer = () => {
                             <Link to='' className='m-0 d-block'>Routine</Link>
                         </div>
                     </Col>
-                    <Col sm='12' md="12" lg="3">
-                        <h2 className='pb-4'>Social Link</h2>
+                    <Col sm={12} md={6} lg={3}>
+                        <h2 className='pb-1 mt-4 mt-md-4 mt-lg-0 pb-md-3'>Social Link</h2>
                         <Link to=''>
                             <div className='social-link'>
                             </div>
@@ -50,17 +50,22 @@ const Footer = () => {
                         </Link>
                     </Col>
                 </Row>
-                <div className='d-flex justify-content-between mt-5'>
-                    <div>
-                        <p>Copyright &copy; 2022 || Alright Reserved</p>
-                    </div>
-                    <div className='links'>
-                        <Link to=''>Privacy</Link>
-                        <Link to=''>Terms</Link>
-                        <Link to=''>Sitemap</Link>
-                        <Link to=''>Help</Link>
-                    </div>
-                </div>
+
+                <Row className='mt-5'>
+                    <Col sm={12} lg={6}>
+                        <div>
+                            <p>Copyright &copy; 2022 || Alright Reserved</p>
+                        </div>
+                    </Col>
+                    <Col sm={12} lg={6}>
+                        <div className='links text-left text-md-end'>
+                            <Link to=''>Privacy</Link>
+                            <Link to=''>Terms</Link>
+                            <Link to=''>Sitemap</Link>
+                            <Link to=''>Help</Link>
+                        </div>
+                    </Col>
+                </Row>
             </Container>
         </footer>
     );

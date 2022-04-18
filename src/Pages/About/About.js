@@ -9,7 +9,7 @@ const About = () => {
                 <div className="about-section py-5">
                     <Row className='align-items-center'>
                         <Col sm={12} md={6}>
-                            <h2 className='sec-title'>HI,<br />THIS IS SAMIUL HASAN</h2>
+                            <h2 className='sec-title text-start'>HI,<br />THIS IS SAMIUL HASAN</h2>
                             <p>My goal is to become a fullstack web developer, and I want to start my career as a web developer. I hope these experiences will help me a lot to start Job life. I am ready to work hard to reach my goal.</p>
                         </Col>
                         <Col sm={12} md={6}>

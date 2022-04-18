@@ -58,7 +58,7 @@ const SocialLogin = () => {
         <div>
 
             <div className="other-signup">
-                <div className='d-flex align-items-center justify-content-center'>
+                <div className='d-block d-md-flex align-items-center justify-content-center'>
                     <button onClick={() => signInWithGoogle()} className='btn'>
                         <img src={googleImg} alt="" />
                         Google {loginPage?'Login':'Signup'}

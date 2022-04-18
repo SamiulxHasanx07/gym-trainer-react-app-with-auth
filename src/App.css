@@ -1,49 +1,67 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,700&display=swap');
-*{
+
+* {
   margin: 0;
   padding: 0;
 }
-h1, h2, h3, h4, h5, h6{
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Rajdhani', sans-serif;
 }
-.font{
+
+.font {
   font-family: 'Rajdhani', sans-serif;
   font-weight: 600;
 }
-p{
+
+p {
   font-family: 'Poppins', sans-serif;
 }
-:root{
-  --main-color:#ff5504;
-  --black-color:#010718;
+
+:root {
+  --main-color: #ff5504;
+  --black-color: #010718;
 }
-.custom-color{
+
+.custom-color {
   color: var(--main-color);
 }
-.bg-color{
+
+.bg-color {
   background-color: var(--black-color);
 }
-.primary-bg{
+
+.primary-bg {
   background-color: var(--main-color);
 }
+
 /* navbar  */
-.navbar{
+.navbar {
   background-color: var(--black-color);
 }
-.navbar a:hover, .logout:hover{
+
+.navbar a:hover,
+.logout:hover {
   color: var(--main-color) !important;
 }
+
 /* Button */
-.card-btn{
+.card-btn {
   background-color: var(--main-color);
   font-size: 18px;
   color: #fff;
   border: none;
   padding: 8px 25px;
 }
-.custom-btn{
+
+.custom-btn {
   background-color: var(--main-color);
   font-size: 25px;
   color: #fff;
@@ -51,13 +69,23 @@ p{
   padding: 10px 25px;
 }
 
-.custom-btn:hover, .card-btn:hover{
+.custom-btn:hover,
+.card-btn:hover {
   background-color: #d64603;
 }
-.sec-title{
+
+.sec-title {
   font-size: 60px;
   font-weight: 700;
 }
-footer{
+
+/* login form */
+.form-container {
+  padding: 3rem 3rem;
+  width: 50%;
+}
+
+
+footer {
   background-color: var(--black-color);
 }

@@ -11,7 +11,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import { toast, ToastContainer } from 'react-toastify';
 
 const Signup = () => {
-    const [userInfo, setUserInfo] = useState({ displayName: '', email: '', password: '', confirmPassword: '' })
+    const [userInfo, setUserInfo] = useState({ name: '', email: '', password: '', confirmPassword: '' })
     const [errors, setErrors] = useState({ name: '', email: '', password: '', confirmPassword: '' })
     const [updateProfile, updating, error] = useUpdateProfile(auth);
     const [
@@ -98,29 +98,31 @@ const Signup = () => {
         }
     }
     if (updating) {
-        toast('please wait');   
-    }
-    const signup = async(e) => {
-        e.preventDefault();
-        createUserWithEmailAndPassword(userInfo.email, userInfo.password);
-        const { userName } = userInfo;
-        await updateProfile({ displayName: "My Name" });
+        toast('please wait');
     }
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
+    const from = location.state?.from?.pathname || '/checkout';
 
     useEffect(() => {
         if (user) {
-            navigate(from)
+            
         }
     }, [user])
+
+    const signup = async (e) => {
+        e.preventDefault();
+        const { name } = userInfo;
+        await createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+        await updateProfile({ displayName: name });
+        navigate(from);
+    }
 
     return (
         <div className='signup py-5'>
             <Container>
-                <div className='form-container w-50 mx-auto py-5 px-5'>
+                <div className='form-container mx-auto'>
                     <h2 className='sec-title text-center'>Please Signup!</h2>
                     <Form onSubmit={signup}>
                         <Form.Group className="mb-3" controlId="formBasicName">

@@ -1,6 +1,5 @@
 
 import { signOut } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
@@ -14,6 +13,8 @@ const Header = () => {
     const Logout = () => {
         signOut(auth);
     };
+
+    
     // const [scrollPosition, setScrollPosition] = useState(0);
     // const handleScroll = () => {
     //     const position = window.pageYOffset;
@@ -54,8 +55,8 @@ const Header = () => {
                             user ? "" : (<CustomLink className='me-3' to='/signup'>Register</CustomLink>)
                         }
 
-                        <p className='text-white me-4  m-0' style={{ textDecoration: 'none' }}>{user ? 'Hi, ' : ''}{user ? user.displayName : ''}</p>
-                        <img style={{ height: '45px', borderRadius: '100px' }} src={user?.photoURL} alt="" />
+                        <p className='text-white me-4  m-0' style={{ textDecoration: 'none' }}>{user ? 'Hi, ' : ''}{user?user.displayName : ''}</p>
+                        <img src={user?.photoURL} style={{ height: '45px', borderRadius: '100px' }}  alt="" />
                         {/* <button className="btn btn-link text-white">Logout</button> */}
                     </Nav>
                 </Navbar.Collapse>

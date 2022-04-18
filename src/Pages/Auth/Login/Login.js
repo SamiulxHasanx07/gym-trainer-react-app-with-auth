@@ -119,9 +119,9 @@ const Login = () => {
 
 
     return (
-        <div className='signup py-5'>
+        <div className='login py-5'>
             <Container>
-                <div className='form-container w-50 mx-auto py-5 px-5'>
+                <div className='form-container mx-auto'>
                     <h2 className='sec-title text-center'>Please Login!</h2>
                     <h2 className='sec-title text-center'> </h2>
                     <Form onSubmit={login}>

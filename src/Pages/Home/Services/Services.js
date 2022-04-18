@@ -51,7 +51,7 @@ const Services = () => {
         <div className='services-seciton py-5'>
             <Container>
                 <h2 className='sec-title mb-5'>Services</h2>
-                <Row xs={1} md={3} className="g-5">
+                <Row xs={1} md={2} lg={3} className="g-5">
                     {
                         services.map(singleService=><SingleService key={singleService.id} singleService={singleService}></SingleService>)
                     }

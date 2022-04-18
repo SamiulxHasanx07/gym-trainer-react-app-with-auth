@@ -1,2 +1,3 @@
-.services-seciton h2{
+.services-seciton{
+    overflow: hidden !important;
 }

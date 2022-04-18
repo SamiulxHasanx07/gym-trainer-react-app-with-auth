@@ -1,0 +1,67 @@
+/* Medium devices (tablets, 768px and up) */
+@media only screen and (min-width: 577px) and (max-width: 1000px) {
+    /* login */
+    .form-container {
+        padding: 3rem 2rem;
+        width: 90%;
+    }
+    .sec-title {
+        font-size: 45px;
+        text-align: center;
+    }
+ }
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+    .banner-text h2 {
+        font-size: 60px;
+    }
+
+    .banner-text {
+        padding: 50px 0;
+    }
+
+    .banner-text h3 {
+        font-size: 35px;
+    }
+
+    .banner-text p {
+        text-align: justify;
+    }
+
+    services-seciton {
+        overflow: hidden !important;
+    }
+
+    .sec-title {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .banner-section {
+        min-height: 200px;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+
+    .custom-btn {
+        font-size: 15px;
+    }
+    /* login */
+    .form-container {
+        padding: 3rem 2rem;
+        width: 98%;
+    }
+    /* other signin/signup */
+    .other-signup button{
+        width: 100%;
+        margin: 5px 0;
+    }
+    /* footer  */
+    footer .links a:first-child{
+        padding-left: 0;
+    }
+
+
+}
