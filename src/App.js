@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import About from './Pages/About/About';
 import Login from './Pages/Auth/Login/Login';
 import RequireAuth from './Pages/Auth/RequireAuth/RequireAuth';
 import ResetPassword from './Pages/Auth/ResetPassword/ResetPassword';
@@ -25,6 +26,7 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/about' element={<About></About>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/resetpass' element={<ResetPassword></ResetPassword>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>

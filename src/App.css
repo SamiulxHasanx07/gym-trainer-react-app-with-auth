@@ -28,6 +28,13 @@ p{
 .primary-bg{
   background-color: var(--main-color);
 }
+/* navbar  */
+.navbar{
+  background-color: var(--black-color);
+}
+.navbar a:hover, .logout:hover{
+  color: var(--main-color) !important;
+}
 /* Button */
 .card-btn{
   background-color: var(--main-color);

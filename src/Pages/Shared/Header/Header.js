@@ -1,6 +1,6 @@
 
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
@@ -14,10 +14,25 @@ const Header = () => {
     const Logout = () => {
         signOut(auth);
     };
+    // const [scrollPosition, setScrollPosition] = useState(0);
+    // const handleScroll = () => {
+    //     const position = window.pageYOffset;
+    //     setScrollPosition(position);
+    // };
 
+    // useEffect(() => {
+    //     window.addEventListener('scroll', handleScroll, { passive: true });
+
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //     };
+    // }, []);
+    
+    // const position = scrollPosition >=100;
+    
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="" variant="dark" sticky='top'>
             <Container>
                 <Link to='/'>
                     <img style={{ height: '45px' }} src={logo} alt="" />
@@ -28,15 +43,18 @@ const Header = () => {
                         <CustomLink className='me-3' to='/'>Home</CustomLink>
                         <CustomLink className='me-3' to='/checkout'>Checkout</CustomLink>
                         <CustomLink className='me-3' to='/blogs'>Blogs</CustomLink>
-                        
+
 
                         {
-                            user?(<button className='text-white btn btn-link me-4 m-0' onClick={Logout}>Logout</button>) : (<CustomLink className='me-3' to='/login'>Login</CustomLink>)
+                            user ? (<p style={{ cursor: "pointer" }} className='text-white logout me-3 m-0' onClick={Logout}>Logout</p>) : (<CustomLink className='me-3' to='/login'>Login</CustomLink>)
                         }
-                        
-                        <CustomLink className='me-3' to='/signup'>Register</CustomLink>
-                        <p className='text-white me-4  m-0' style={{textDecoration:'none'}}>{user?'Hi, ':''}{user?user.displayName:''}</p>
-                        <img style={{height:'45px', borderRadius:'100px'}} src={user?.photoURL} alt="" />
+
+                        {
+                            user ? "" : (<CustomLink className='me-3' to='/signup'>Register</CustomLink>)
+                        }
+
+                        <p className='text-white me-4  m-0' style={{ textDecoration: 'none' }}>{user ? 'Hi, ' : ''}{user ? user.displayName : ''}</p>
+                        <img style={{ height: '45px', borderRadius: '100px' }} src={user?.photoURL} alt="" />
                         {/* <button className="btn btn-link text-white">Logout</button> */}
                     </Nav>
                 </Navbar.Collapse>
