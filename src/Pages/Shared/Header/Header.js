@@ -43,6 +43,7 @@ const Header = () => {
                         <CustomLink className='me-3' to='/'>Home</CustomLink>
                         <CustomLink className='me-3' to='/checkout'>Checkout</CustomLink>
                         <CustomLink className='me-3' to='/blogs'>Blogs</CustomLink>
+                        <CustomLink className='me-3' to='/about'>About</CustomLink>
 
 
                         {
