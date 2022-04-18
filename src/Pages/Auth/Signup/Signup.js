@@ -39,9 +39,8 @@ const Signup = () => {
                 setOutSideError('')
                 break;
             default:
-
         }
-    })
+    },[outSideError])
 
     const handleName = (e) => {
         const name = e.target.value;
@@ -115,7 +114,7 @@ const Signup = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/checkout';
+    const from = location.state?.from?.pathname || '/home';
 
     useEffect(() => {
         if (user) {

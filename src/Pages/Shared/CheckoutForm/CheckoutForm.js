@@ -3,7 +3,6 @@ import { Container, Form } from 'react-bootstrap';
 import { toast, ToastContainer } from 'react-toastify';
 
 const CheckoutForm = () => {
-
     const checkout = (e) => {
         e.preventDefault();
         toast('thank you for the booking.')

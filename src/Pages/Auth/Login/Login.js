@@ -78,7 +78,6 @@ const Login = () => {
         }
     }
 
-
     const login = e => {
         e.preventDefault();
         signInWithEmailAndPassword(userInfo.email, userInfo.password)
@@ -87,7 +86,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-
+    
     useEffect(() => {
         if (user) {
             navigate(from)
@@ -131,24 +130,6 @@ const Login = () => {
                         <p className='mt-3'>Or</p>
                         <div></div>
                     </div>
-
-                    {/* <div className="other-signup">
-                        <div className='d-flex align-items-center justify-content-center'>
-                            <button onClick={() => signInWithGoogle()} className='btn'>
-                                <img src={googleImg} alt="" />
-                                Google Login
-                            </button>
-                            <button onClick={() => signInWithFacebook()} className='btn'>
-                                <img src={facebookImg} alt="" />
-                                Facebook Login
-                            </button>
-                            <button onClick={() => signInWithGithub()} className='btn'>
-                                <img src={githubImg} alt="" />
-                                Github Login
-                            </button>
-                        </div>
-                    </div>
-                    */}
                     <ToastContainer />
                     <SocialLogin></SocialLogin>
                 </div>

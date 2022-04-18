@@ -47,7 +47,6 @@ const SocialLogin = () => {
                 break;
             default:
             // toast('Something went wrong try again!');
-
         }
     }, [newError])
 
