@@ -3,19 +3,23 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 import logo from '../../../images/logo-white.png';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faGoogle, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faPhone, faEnvelope, faLocationPin } from '@fortawesome/free-solid-svg-icons';
 const Footer = () => {
     return (
         <footer className='pt-5 pb-3 text-white'>
             <Container>
                 <Row>
-                    <Col  sm={12} md={6} lg={3}>
+                    <Col sm={12} md={6} lg={3}>
                         <img className='mb-5' style={{ height: '50px' }} src={logo} alt="" />
-                        <p className='m-0'>Phone: +880 1722-058000</p>
-                        <p className='m-0'>Mail: sam.coach2022@gmail.com</p>
+                        <h2>Our Contacts</h2>
+                        <p className='m-0'><FontAwesomeIcon className="me-2"icon={faPhone}/>: +880 1722-058000</p>
+                        <p className='m-0'><FontAwesomeIcon className="me-2"icon={faEnvelope}/>: sam.coach2022@gmail.com</p>
+                        <p className='m-0'><FontAwesomeIcon className="me-2"icon={faLocationPin}/>: Padma-abasik, Boalia, Rajshahi</p>
 
                     </Col>
-                    <Col  sm={12} md={6} lg={3}>
+                    <Col sm={12} md={6} lg={3}>
                         <h2 className='pb-1 mt-4 mt-md-4 mt-lg-0 pb-md-3'>Services</h2>
 
                         <div className='footer-sec-text'>
@@ -27,7 +31,7 @@ const Footer = () => {
                             <Link to='' className='m-0 d-block'>Nutrition</Link>
                         </div>
                     </Col>
-                    <Col  sm={12} md={6} lg={3}>
+                    <Col sm={12} md={6} lg={3}>
                         <h2 className='pb-1 mt-4 mt-md-4 mt-lg-0 pb-md-3'>Other Link</h2>
 
                         <div className='footer-sec-text'>
@@ -45,7 +49,19 @@ const Footer = () => {
                             </div>
                         </Link>
                         <Link to=''>
-                            <div className='social-link'>
+                            <div className='social-link d-flex'>
+                                <div>
+                                    <FontAwesomeIcon icon={faFacebookF} />
+                                </div>
+                                <div>
+                                    <FontAwesomeIcon icon={faGoogle} />
+                                </div>
+                                <div>
+                                    <FontAwesomeIcon icon={faInstagram} />
+                                </div>
+                                <div>
+                                    <FontAwesomeIcon icon={faLinkedin} />
+                                </div>
                             </div>
                         </Link>
                     </Col>

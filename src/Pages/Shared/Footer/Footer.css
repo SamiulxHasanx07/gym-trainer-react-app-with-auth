@@ -19,3 +19,23 @@ footer .links a:first-child{
     color: #d64603;
     cursor: pointer;
 }
+
+.social-link div{
+    height: 40px;
+    width: 40px;
+    background-color: #fff;
+    color:#d64603;
+    line-height: 40px;
+    text-align: center;
+    margin-right: 20px;
+}
+.social-link div:hover{
+    color:#fff;
+    background-color: #d64603;
+}
+.social-link div:last-child{
+    margin-right: 0;
+}
+.social-link div svg{
+    font-size:18px;
+}
